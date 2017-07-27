@@ -1,0 +1,29 @@
+﻿Version=5.8
+AppType=StandardJava
+NumberOfModules=5
+Module1=SkeletonPage
+Module2=SK_Container
+Module3=SK_Column
+Module4=SK_Helper
+Module5=SK_FontAwesomeIcon
+Build1=Default,nz.ope.skeleton
+NumberOfFiles=0
+NumberOfLibraries=1
+Library1=jcore
+@EndOfDesignText@
+'Non-UI application (console / server application)
+#Region  Project Attributes 
+	#CommandLineArgs:
+	#MergeLibraries: True 
+	#LibraryVersion: 1.01
+	#LibraryAuthor: Trevor Hart (www.ope.nz)
+	#LibraryName: Skeleton
+#End Region
+
+Sub Process_Globals
+	
+End Sub
+
+Sub AppStart (Args() As String)
+		
+End Sub
