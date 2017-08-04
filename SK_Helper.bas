@@ -1,5 +1,5 @@
 ﻿Type=Class
-Version=5.8
+Version=5.82
 ModulesStructureVersion=1
 B4J=true
 @EndOfDesignText@
@@ -103,7 +103,7 @@ Public Sub HTMLAnchorButton(Text As String, Primary As Boolean, href As String) 
 	Return pContent.ToString
 End Sub
 
-Public Sub HTMLInputButton(Text As String, Primary As Boolean, Submit As Boolean) As String
+Public Sub HTMLInputButton(Text As String, Primary As Boolean, Submit As Boolean, Id As String) As String
 	pContent.Initialize
 
 	pContent.Append("<input ")
@@ -114,6 +114,10 @@ Public Sub HTMLInputButton(Text As String, Primary As Boolean, Submit As Boolean
 		pContent.Append("Type=""submit"" ")
 	Else	
 		pContent.Append("Type=""button"" ")
+	End If
+	
+	If Id <> "" Then
+		pContent.Append($"id="${Id}" name="${Id}""$)
 	End If	
 	
 	pContent.Append("value=""" & Text & """>")
@@ -126,7 +130,11 @@ Public Sub HTMLCode(Text As String) As String
 End Sub
 
 Public Sub HTMLInputCheckbox(Checked As Boolean, Id As String) As String
-	Return "<input Type=""checkbox"" checked=""" & Checked & """ id=""" & Id & """ name=""" & Id & """>"
+	pContent.Initialize
+	pContent.Append($"<input Type="checkbox" id="${Id}" name="${Id}""$)	
+	If Checked = True Then pContent.Append(" checked")	
+	pContent.Append(">")	
+	Return pContent.ToString
 End Sub
 
 Public Sub HTMLInputHidden(Id As String, Value As String) As String
@@ -168,9 +176,25 @@ Public Sub HTMLLink(Text As String, Link As String) As String
 	Return "<a href=""" & Link & """>" & Text & "</a>"
 End Sub
 
-Public Sub HTMLImage(Src As String) As String
-	Return "<img src=""" & Src & """>"
+Public Sub HTMLImage(Src As String, Width As String, Height As String, Alt As String, Link As String) As String
+	pContent.Initialize
+	
+	If Link <> "" Then pContent.Append($"<a href="${Link}">"$)
+	
+	pContent.Append($"<img src="${Src}""$)
+	
+	If Width <> "" Then pContent.Append($" width="${Width}""$)
+	If Height <> "" Then pContent.Append($" height="${Height}""$)
+	If Alt <> "" Then pContent.Append($" alt="${Alt}""$)
+	
+	pContent.Append(">")
+	
+	If Link <> "" Then pContent.Append("</a>")
+	
+	Return pContent.ToString
 End Sub
+
+
 
 Public Sub HTMLFormStart(Name As String, Action As String, Method As String, OnSubmit As String) As String
 	pContent.Initialize

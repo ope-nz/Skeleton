@@ -1,5 +1,5 @@
 ﻿Type=Class
-Version=5.8
+Version=5.82
 ModulesStructureVersion=1
 B4J=true
 @EndOfDesignText@
@@ -66,8 +66,8 @@ Public Sub AddInputHidden(Id As String, Value As String)
 End Sub
 
 'Add an input button form element
-Public Sub AddInputButton(Text As String, Primary As Boolean, Submit As Boolean)
-	pContent.Add(h.HTMLInputButton(Text,Primary,Submit))
+Public Sub AddInputButton(Text As String, Primary As Boolean, Submit As Boolean, Id As String)
+	pContent.Add(h.HTMLInputButton(Text,Primary,Submit,Id))
 	AddCRLF	
 End Sub
 
@@ -114,6 +114,7 @@ End Sub
 Public Sub AddLabel(Text As String, Element As String)
 	pContent.Add(h.HTMLLabel(Text,Element))
 	AddCRLF
+	'AddNBSP
 End Sub
 
 'Add a named div
@@ -123,8 +124,8 @@ Public Sub AddNamedDiv(Name As String)
 End Sub
 
 'Add an image element
-Public Sub AddImage(Src As String)
-	pContent.Add(h.HTMLImage(Src))	
+Public Sub AddImage(Src As String, Width As String, Height As String, Alt As String, Link As String)
+	pContent.Add(h.HTMLImage(Src, Width , Height, Alt, Link))
 	AddCRLF
 End Sub
 
