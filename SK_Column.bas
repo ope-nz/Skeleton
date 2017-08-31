@@ -124,8 +124,8 @@ Public Sub AddNamedDiv(Name As String)
 End Sub
 
 'Add an image element
-Public Sub AddImage(Src As String, Width As String, Height As String, Alt As String, Link As String)
-	pContent.Add(h.HTMLImage(Src, Width , Height, Alt, Link))
+Public Sub AddImage(Src As String, Width As String, Height As String, Alt As String, Link As String, Responsive As Boolean)
+	pContent.Add(h.HTMLImage(Src, Width , Height, Alt, Link, Responsive))
 	AddCRLF
 End Sub
 

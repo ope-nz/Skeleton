@@ -43,7 +43,7 @@ Public Sub HTMLInputList(Items As List, Id As String, Selected As String, Includ
 	
 	Dim i As Int
 	
-	pContent.Append("<select class=""u-full-width"" Id=""" & Id & """>")
+	pContent.Append($"<select class="u-full-width" id="${Id}" name="${Id}">"$)
 	
 	If IncludeBlank = True Then pContent.Append("<option value="" ""> </option>")
 	
@@ -106,21 +106,21 @@ End Sub
 Public Sub HTMLInputButton(Text As String, Primary As Boolean, Submit As Boolean, Id As String) As String
 	pContent.Initialize
 
-	pContent.Append("<input ")
+	pContent.Append("<input")
 	
-	If Primary Then pContent.Append("class=""button-primary"" ")
+	If Primary Then pContent.Append(" class=""button-primary""")
 	
 	If Submit Then
-		pContent.Append("Type=""submit"" ")
+		pContent.Append(" type=""submit""")
 	Else	
-		pContent.Append("Type=""button"" ")
+		pContent.Append(" type=""button""")
 	End If
 	
 	If Id <> "" Then
-		pContent.Append($"id="${Id}" name="${Id}""$)
+		pContent.Append($" id="${Id}" name="${Id}""$)
 	End If	
 	
-	pContent.Append("value=""" & Text & """>")
+	pContent.Append(" value=""" & Text & """>")
 	
 	Return pContent.ToString	
 End Sub
@@ -146,7 +146,7 @@ Public Sub HTMLInputText(PlaceHolderText As String, Id As String, InputType As S
 End Sub
 
 Public Sub HTMLInputTextArea(PlaceHolderText As String, Id As String, InputType As String, InitialValue As String) As String
-	Return "<textarea class=""u-full-width"" Type=""" & InputType & """ placeholder=""" & PlaceHolderText & """ id=""" & Id & """ name=""" & Id & """ value=""" & InitialValue & """></textarea>"
+	Return "<textarea class=""u-full-width"" Type=""" & InputType & """ placeholder=""" & PlaceHolderText & """ id=""" & Id & """ name=""" & Id & """>" & InitialValue & "</textarea>"
 End Sub
 
 Public Sub HTMLLabel(Text As String, Element As String) As String	
@@ -176,7 +176,7 @@ Public Sub HTMLLink(Text As String, Link As String) As String
 	Return "<a href=""" & Link & """>" & Text & "</a>"
 End Sub
 
-Public Sub HTMLImage(Src As String, Width As String, Height As String, Alt As String, Link As String) As String
+Public Sub HTMLImage(Src As String, Width As String, Height As String, Alt As String, Link As String, Responsive As Boolean) As String
 	pContent.Initialize
 	
 	If Link <> "" Then pContent.Append($"<a href="${Link}">"$)
@@ -186,6 +186,7 @@ Public Sub HTMLImage(Src As String, Width As String, Height As String, Alt As St
 	If Width <> "" Then pContent.Append($" width="${Width}""$)
 	If Height <> "" Then pContent.Append($" height="${Height}""$)
 	If Alt <> "" Then pContent.Append($" alt="${Alt}""$)
+	If Responsive = True Then pContent.Append($" class="u-img-responsive""$)
 	
 	pContent.Append(">")
 	
@@ -193,8 +194,6 @@ Public Sub HTMLImage(Src As String, Width As String, Height As String, Alt As St
 	
 	Return pContent.ToString
 End Sub
-
-
 
 Public Sub HTMLFormStart(Name As String, Action As String, Method As String, OnSubmit As String) As String
 	pContent.Initialize

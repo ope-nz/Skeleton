@@ -15,7 +15,7 @@ Library1=jcore
 #Region  Project Attributes 
 	#CommandLineArgs:
 	#MergeLibraries: True 
-	#LibraryVersion: 1.03
+	#LibraryVersion: 1.04
 	#LibraryAuthor: Trevor Hart (www.ope.nz)
 	#LibraryName: Skeleton
 #End Region

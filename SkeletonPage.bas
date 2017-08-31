@@ -19,7 +19,8 @@ Sub Class_Globals
 	Private SkeletonPageObject As SK_Page
 	
 	Private pIncludeCSSSkeleton As Boolean = True
-	Private pIncludeCSSSkeletonAlerts As Boolean = True
+	'Private pIncludeCSSSkeletonAlerts As Boolean = True
+	Private pIncludeCSSSkeletonExtensions As Boolean = True
 	Private pIncludeCSSNormalize As Boolean = True
 	Private pIncludeCSSFontawesome As Boolean = True
 	Private pIncludeCSSFontRaleway As Boolean = True
@@ -83,9 +84,9 @@ Public Sub setIncludeCSSSkeleton(Include As Boolean)
 End Sub
 
 'Include Skeleton Alerts CSS?
-Public Sub setIncludeCSSSkeletonAlerts(Include As Boolean)
-	pIncludeCSSSkeletonAlerts = Include
-End Sub
+'Public Sub setIncludeCSSSkeletonAlerts(Include As Boolean)
+'	pIncludeCSSSkeletonAlerts = Include
+'End Sub
 
 'Include Normalize CSS?
 Public Sub setIncludeCSSNormalize(Include As Boolean)
@@ -100,6 +101,11 @@ End Sub
 'Include Raleway Font CSS?
 Public Sub setIncludeCSSFontRaleway(Include As Boolean)
 	pIncludeCSSFontRaleway = Include
+End Sub
+
+'Include Skeleton Extensions CSS?
+Public Sub setIncludeCSSSkeletonExtensions(Include As Boolean)
+	pIncludeCSSSkeletonExtensions = Include
 End Sub
 
 #End Region
@@ -166,8 +172,9 @@ Private Sub Begin_Body As String
 	sb.Append("<!-- CSS -->").Append(CRLF)
 	If pIncludeCSSNormalize = True Then sb.Append("<link rel=""stylesheet"" href=""/css/normalize.css"" type=""text/css"">").Append(CRLF)
 	If pIncludeCSSSkeleton = True Then sb.Append("<link rel=""stylesheet"" href=""/css/skeleton.css"" type=""text/css"">").Append(CRLF)
-	If pIncludeCSSSkeletonAlerts = True Then sb.Append("<link rel=""stylesheet"" href=""/css/skeleton-alerts.css"" type=""text/css"">").Append(CRLF)	
-	
+	'If pIncludeCSSSkeletonAlerts = True Then sb.Append("<link rel=""stylesheet"" href=""/css/skeleton-alerts.css"" type=""text/css"">").Append(CRLF)
+	If pIncludeCSSSkeletonExtensions = True Then sb.Append("<link rel=""stylesheet"" href=""/css/skeleton-extensions.css"" type=""text/css"">").Append(CRLF)
+		
 	'sb.Append("<!-- Favicon -->").Append(CRLF)
 	'sb.Append("<link rel=""icon"" type=""image/png"" href=""/images/favicon.png"">").Append(CRLF)
 	
